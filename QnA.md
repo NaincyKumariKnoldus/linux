@@ -311,6 +311,7 @@ A Linux repository is a storage location from which your system retrieves and in
 
 ### Q. What are the package managers used in Linux?
 Package Manager is used to automating the process of installing, upgrading, configuring, and removing programs. There are many Package Manager today for Unix/Linux-based systems. Package Managers are available in different languages like python, ruby, etc.
+[pkg1.pdf](https://github.com/NaincyKumariKnoldus/linux/files/7402626/pkg1.pdf)
 
 
 
