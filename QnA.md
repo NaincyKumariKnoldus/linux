@@ -311,7 +311,77 @@ A Linux repository is a storage location from which your system retrieves and in
 
 ### Q. What are the package managers used in Linux?
 Package Manager is used to automating the process of installing, upgrading, configuring, and removing programs. There are many Package Manager today for Unix/Linux-based systems. Package Managers are available in different languages like python, ruby, etc.
-[pkg1.pdf](https://github.com/NaincyKumariKnoldus/linux/files/7402626/pkg1.pdf)
+![pkg1 (1)_page-0001](https://user-images.githubusercontent.com/87004609/138551497-1399544b-d4a0-4af7-b425-d41e5636bb3d.jpg)
+
+### Q. What does the number represent after the file permissions?
+The number represents the total number of files. \
+  `-rwxrw-r-- 1` is a file with read, write and execute privileges for the owner. \
+  `drwxr-xr-x 10` is a directory with 8 files. The extra 2 are . and ... Only the owner can create files in this directory, others can access which files are in the directory, and read the contents of those files if the privileges allow. \
+  The number succeeding permission characters indicates the number of links if the node is a file, and number of "sub-nodes" if the node is a directory.
+  
+ ### Q. What is the difference between apt and apt-get?
+ apt is a subset of apt-get and apt-cache commands providing necessary commands for package management.While apt does have some similar command options as apt-    get, it’s not backward compatible with apt-get.
+ 
+ ### Q. How can I give access to someone to my AWS instance?
+ 1. Connect to your Linux instance using SSH. 
+2. Use the adduser command to add a new user account to an EC2 instance (replace new_user with the new account name). The following example creates an associated group, home directory, and an entry in the /etc/passwd file of the instance. \
+`$ sudo adduser new_user`
+3. Change the security context to the new_user account so that folders and files you create have the correct permissions: \
+`$ sudo su - new_user`
+4. Create a .ssh directory in the new_user home directory:
+`$ mkdir .ssh`
+5. Use the chmod command to change the .ssh directory's permissions to 700. Changing the permissions restricts access so that only the new_user can read, write, \ or open the .ssh directory.
+`chmod 700 .ssh`
+6. Use the touch command to create the authorized_keys file in the .ssh directory: \
+`$ touch .ssh/authorized_keys`
+7. Use the chmod command to change the .ssh/authorized_keys file permissions to 600. Changing the file permissions restricts read or write access to the new_user. \
+`$ chmod 600 .ssh/authorized_keys`
+
+### Q. What are daemon applications?
+A daemon (also known as background processes) is a [Linux] program that runs in the background. Almost all daemons have names that end with the letter "d". For example, [httpd] the daemon that handles the Apache server, or, [sshd] which handles [SSH] remote access connections. Linux often start daemons at boot time. Shell scripts stored in [/etc/init.d] directory are used to start and stop daemons.
+
+### Q. What does a ".d" represent after a filename?
+"d" stands for directory and such a directory is a collection of configuration files which are often fragments that are included in the main configuration file. The point is to compartmentalize configuration concerns to increase maintainability.
+
+### Q. What happens when a pem file gets deleted?
+There is no way to recover the deleted pem file. The only solution is to create another one. And this can not be done using the console. We will have to use the CLI. \
+
+`$ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem`
+
+### Q. What information is stored in the /etc/host file?
+The /etc/hosts file contains a mapping of IP addresses to URLs. 
+
+### Q. What is SCP & what does this command do?
+The SCP is a network protocol,which supports file transfers between hosts on a network. The scp command copies files or directories between a local and a remote system or between two remote systems. \
+ ` $ scp -i key.pem naincy.txt ubuntu@IP :/home/ubuntu `
+ 
+### Q. How port forwarding works?
+ Port forwarding is a technique that is used to allow external devices access to computers services on private networks.SSH Port forwarding is used to forward ports between a local and a remote Linux machine using SSH protocol.Local port forwarding is the most common type of port forwarding. It is used to let a user connect from the local computer to another server, i.e. forward data securely from another client application running on the same computer as a Secure Shell (SSH) client.
+ 
+### Q. How can we connect without IP to AWS instance?
+Assign an Elastic IP to the instance. \
+
+Go into the EC2 dashboard, then in the NETWORK & SECURITY menu go to Elastic IPs. \
+
+Click on Allocate a new address. \
+
+Right click on the new IP and select Associate address. \
+
+Associate it with your EC2 instance that doesn't have an elastic IP. \
+
+Now we can try to connect to the instance again and the RDP IP will be the elastic one instead of the VPC private one.
+
+### Q.  What is an ssh agent?
+ssh-agent is a program to hold private keys used for public key authentication. The ssh-agent provides a secure way of storing the passphrase of the private key.
+
+### Q. Create a unit file for any application.
+
+
+
+### Q. What is RHEL?
+Red Hat Enterprise Linux is a Linux distribution developed by Red Hat. Like all Linux distributions, RHEL is open source. Thus, people can view its source code, download it and make their own customized versions.Fedora, which is given entirely for free, is sponsored by Red Hat (the company) but is actively developed by a community of developers.
+
+
 
 
 
