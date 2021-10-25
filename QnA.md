@@ -375,6 +375,23 @@ Now we can try to connect to the instance again and the RDP IP will be the elast
 ssh-agent is a program to hold private keys used for public key authentication. The ssh-agent provides a secure way of storing the passphrase of the private key.
 
 ### Q. Create a unit file for any application.
+[Unit] \
+Description=The NGINX HTTP and reverse proxy server \
+After=syslog.target network-online.target remote-fs.target nss-lookup.target \
+Wants=network-online.target \
+Conflicts=apache2.service 
+
+[Service] \
+Type=forking \
+PIDFile=/run/nginx.pid \
+ExecStartPre=/usr/sbin/nginx -t \
+ExecStart=/usr/sbin/nginx \
+ExecReload=/usr/sbin/nginx -s reload \
+ExecStop=/bin/kill -s QUIT $MAINPID \
+PrivateTmp=true 
+
+[Install] \
+WantedBy=multi-user.target 
 
 
 
